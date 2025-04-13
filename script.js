@@ -1,12 +1,11 @@
 function initApp() {
-  // Show loader, then reveal content
   setTimeout(() => {
     document.getElementById('loader').style.display = 'none';
     document.getElementById('main-content').classList.remove('hidden');
     loadExpenses();
     loadBalance();
-  }, 1200);
-};
+    updateTotalSpent(); // <- Add this
+  }, 1200);};
 
 // Add Expense
 function addExpense(event) {
@@ -33,7 +32,7 @@ function addExpense(event) {
   let newBalance = currentBalance - amount;
   localStorage.setItem('balance', newBalance.toFixed(2));
   document.getElementById('bank-balance').textContent = newBalance.toFixed(2);
-
+    updateTotalSpent(); // <- Add this
   // Clear form
   document.querySelector('form').reset();
 }
@@ -72,4 +71,11 @@ function updateBalance(e) {
 function loadBalance() {
   const bal = localStorage.getItem('balance') || 0;
   document.getElementById('bank-balance').textContent = parseFloat(bal).toFixed(2);
+} // <- close it here
+
+// Update Total Spent
+function updateTotalSpent() {
+  let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+  let total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+  document.getElementById("total-spent").textContent = total.toFixed(2);
 }
