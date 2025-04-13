@@ -73,8 +73,3 @@ function loadBalance() {
   const bal = localStorage.getItem('balance') || 0;
   document.getElementById('bank-balance').textContent = parseFloat(bal).toFixed(2);
 }
-window.onload = function () {
-  alert("Welcome or should I say Bonjour Amigo Or should i say Kudu... Kudu...Kudu... welcome !");
-  loadExpenses();
-  loadBalance();
-};
