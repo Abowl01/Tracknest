@@ -79,3 +79,17 @@ function updateTotalSpent() {
   let total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
   document.getElementById("total-spent").textContent = total.toFixed(2);
 }
+function resetApp() {
+  const confirmReset = confirm("Kudu Are you sure you want to reset all data?");
+  if (!confirmReset) return;
+
+  localStorage.removeItem("expenses");
+  localStorage.removeItem("balance");
+
+  // Reset values on the page
+  document.getElementById('bank-balance').textContent = "0.00";
+  document.getElementById('total-spent').textContent = "0.00";
+  document.getElementById('expense-table-body').innerHTML = "";
+
+  alert("Kudu's All data has been cleared!");
+}
