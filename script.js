@@ -80,7 +80,7 @@ function updateTotalSpent() {
   document.getElementById("total-spent").textContent = total.toFixed(2);
 }
 function resetApp() {
-  const confirmReset = confirm("Kudu Are you sure you want to reset all data?");
+  const confirmReset = confirm("Are you sure you want to reset all data?");
   if (!confirmReset) return;
 
   localStorage.removeItem("expenses");
@@ -91,5 +91,5 @@ function resetApp() {
   document.getElementById('total-spent').textContent = "0.00";
   document.getElementById('expense-table-body').innerHTML = "";
 
-  alert("Kudu's All data has been cleared!");
+  alert("All data has been cleared!");
 }
